@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using WebApi.Entities;
@@ -7,7 +7,7 @@ namespace WebApi.Controllers
 {
   [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("backend/api/")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
+        [HttpPost("auth/login")]
         public IActionResult Authenticate([FromBody]User userParam)
         {
             var user = _userService.Authenticate(userParam.Username, userParam.Password);
